@@ -1,0 +1,41 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+html {
+    background-color: #1d1f21;
+    font-family: "Fira Code";
+}
+
+#richText {
+    color: #c5c8c6;
+}
+
+#code {
+    position: relative;
+    margin-left: 10px;
+}
+
+#primaryCaret {
+    position: absolute;
+    border-left: 1.2px solid white;
+    margin-left: -1px;
+    margin-top: 2px;
+    pointer-events: none;
+    height: 16px;
+}
+
+.blink {
+    animation-name: blink-animation;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
+}
+
+
+@keyframes blink-animation {
+  0% { opacity: 1; }
+  25% { opacity: 0; }
+  100% { opacity: 0; }
+}
