@@ -3,7 +3,7 @@ import extra_utils
 
 TEXT_LIST = ['']
 
-CARET_POS = [0, 0]
+CARET_POS = (0, 0)
 
 CARET_SHIFT_DICT = {
     'ArrowRight': (0, 1),
@@ -21,7 +21,7 @@ def key_pressed(key):
         add_text(key)
         move_caret((0, 1))
     elif key == 'Enter':
-        TEXT_LIST.append('')
+        TEXT_LIST.insert(CARET_POS[0] + 1, '')
         move_caret((1, 0))
     elif key.startswith('Arrow'):
         move_caret(CARET_SHIFT_DICT[key])
@@ -32,7 +32,7 @@ def move_caret(shift):
     global CARET_POS
     line_pos = max(min(CARET_POS[0] + shift[0], len(TEXT_LIST) - 1), 0)
     char_pos = max(min(CARET_POS[1] + shift[1], len(TEXT_LIST[line_pos])), 0)
-    CARET_POS = [line_pos, char_pos]
+    CARET_POS = (line_pos, char_pos)
     pass
 
 
