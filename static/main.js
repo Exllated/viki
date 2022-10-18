@@ -3,7 +3,13 @@ primaryCaret = document.getElementById('primaryCaret')
 
 document.addEventListener("keydown", dockeydown);
 
+KEY_IGNORE_LIST = ['F5', 'F11', 'F12']
+
 async function dockeydown(e) {
+    if (KEY_IGNORE_LIST.includes(e.key)) {
+        return
+    }
+
     e.preventDefault();
     jsonResp = JSON.parse(await fetchAsync('/viki/api/on_key_pressed?k=' + e.key + '&alt=' + (e.altKey ? '1' : '0') + '&ctrl=' + (e.ctrlKey ? '1' : '0')));
     richText.innerHTML = jsonResp.html;
